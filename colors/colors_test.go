@@ -6,13 +6,13 @@ import (
 	"testing"
 )
 
-var nums = []int{1,2,3,4,5}
-var yourNums = []int{9,3,0,7,1}
+var nums = []int{7,0,3,5,1}
+var yourNums = []int{3,0,2,4,7}
 var numsOneElement = []int{3}
 var emptyNums []int
 
 func TestCheckColors(t *testing.T) {
-	expected := []int{1,1,1,0,0}
+	expected := []int{1,2,0,0,1}
 	res := CheckColors(yourNums, nums)
 	assert.Equal(t, expected, res)
 }

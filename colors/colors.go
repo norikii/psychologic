@@ -16,27 +16,24 @@ var colors = []string{
 	"brown",
 }
 
-// 0 - not in array
-// 1 - present in array
+// 0 - no match
+// 1 - match
+// 2 - match and same position
 func CheckColors(yourColors []int, setColors[]int) []int {
-	var result []int
+	// instantiate the array with no matching elements
+	result := []int{0,0,0,0,0}
 
-	for _, yourColor := range yourColors {
-		for _, setColor := range setColors {
+	// checks if there are any matching colors
+	for iYour, yourColor := range yourColors {
+		for iSet, setColor := range setColors {
 			if yourColor == setColor {
-				result = append(result, 1)
+				// if match found - assign 1
+				result[iYour] = 1
+				// if match of color and position found - assign 2
+				if iYour == iSet && yourColors[iYour] == setColors[iSet] {
+					result[iYour] = 2
+				}
 			}
-		}
-	}
-
-	return result
-}
-
-func checkAll(yourColors []int, setColors[]int) []int {
-	var result []int
-	for i:=0; i<5; i++ {
-		if yourColors[i] == setColors[i] {
-			result = append(result, yourColors[i])
 		}
 	}
 
